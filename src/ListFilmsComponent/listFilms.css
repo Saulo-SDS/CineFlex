@@ -1,0 +1,32 @@
+.description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    color:#293845;
+}
+
+.container {
+    margin-top: 67px;
+}
+
+.films {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 38px 0 38px;
+}
+
+.film {
+    margin-bottom: 25px;
+}
+
+.film img {
+    height: 193px;
+    width: 129px;
+}
