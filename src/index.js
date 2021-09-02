@@ -4,6 +4,7 @@ import './index.css';
 import './TopComponent/top.css';
 import './ListFilmsComponent/listFilms.css';
 import './SessionComponent/sessionFilm.css';
+import './SeatsComponent/seat.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
