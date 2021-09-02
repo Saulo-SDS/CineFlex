@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './TopComponent/top.css'
-import './ListFilmsComponent/listFilms.css'
+import './TopComponent/top.css';
+import './ListFilmsComponent/listFilms.css';
+import './SessionComponent/sessionFilm.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

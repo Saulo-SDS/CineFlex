@@ -1,0 +1,75 @@
+
+.info-film {
+    justify-content: space-between;
+    padding: 0 38px 20px 38px;
+}
+.info-film  span {
+    margin-bottom: 50px;
+}
+.day {
+    font-size: 20px;
+    font-style: normal;
+    line-height: 23px;
+    letter-spacing: 0.02em;
+    color: #293845;
+    margin-bottom: 2502px;
+}
+
+.buttons {
+    margin-top: 22px;
+}
+
+.buttons button{
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    height: 43px;
+    width: 83px;
+    border: none;
+    border-radius: 3px;
+    background-color: #E8833A;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+button:hover {
+    height: 50px;
+    background-color: red;
+}
+
+.bottom-bar {
+    display: flex;
+    height: 117px;
+    width: 375px;
+    background-color: #DFE6ED;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.chosen-film {
+   display: flex;
+   align-items: center;
+}
+
+.chosen-film div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 89px;
+    width: 64px;
+    border-radius: 2px;    
+    margin-left: 10px;
+    background-color: #ffffff;
+}
+
+.chosen-film img {
+    height: 72px;
+    width: 48px;
+}
+
+.chosen-film span { 
+    font-size: 26px;
+    line-height: 30px;
+    margin-left: 15px;
+    color: #293845;
+}
