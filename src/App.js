@@ -1,9 +1,9 @@
 import './App.css';
-import FinalScreen from './FinalScreenComponent/FinalScreen';
-import ListFilms from './ListFilmsComponent/ListFilms';
-import Seats from './SeatsComponent/Seats';
-import SessionFilm from './SessionComponent/SessionFilm';
-import Top from './TopComponent/Top';
+import FinalScreen from './Components/FinalScreenComponent/FinalScreen';
+import ListFilms from './Components/ListFilmsComponent/ListFilms';
+import Seats from './Components/SeatsComponent/Seats';
+import SessionFilm from './Components/SessionComponent/SessionFilm';
+import Top from './Components/TopComponent/Top';
 
 function App() {
   return (

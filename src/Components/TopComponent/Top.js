@@ -1,4 +1,15 @@
-.top {
+import styled from "styled-components";
+
+export default function Top() {
+
+    return (
+        <Header>
+            <span>CINEFLEX</span>
+        </Header>
+    );
+}
+
+const Header = styled.header`
     width: 100%;
     height: 67px;
     display: flex;
@@ -12,4 +23,4 @@
     font-size: 34px;
     font-weight: 400;
     line-height: 40px;
-}
+`;

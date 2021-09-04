@@ -2,11 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './reset.css';
-import './TopComponent/top.css';
-import './ListFilmsComponent/listFilms.css';
-import './SessionComponent/sessionFilm.css';
-import './SeatsComponent/seat.css';
-import './FinalScreenComponent/finalScreen.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
