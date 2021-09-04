@@ -1,4 +1,5 @@
 import './App.css';
+import FinalScreen from './FinalScreenComponent/FinalScreen';
 import ListFilms from './ListFilmsComponent/ListFilms';
 import Seats from './SeatsComponent/Seats';
 import SessionFilm from './SessionComponent/SessionFilm';
@@ -10,7 +11,9 @@ function App() {
       <Top/>
       {/*<ListFilms/>*/}
       {/*<SessionFilm/>*/}
-      {<Seats/>}
+      {/*<Seats/>*/}
+      {<FinalScreen/>}
+
     </>
   );
 }
