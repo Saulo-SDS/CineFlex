@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const Films = styled.div`
+const Films = styled.ul`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 
-    div {
+    li {
         display: flex;
         align-items: center;
         justify-content: center;

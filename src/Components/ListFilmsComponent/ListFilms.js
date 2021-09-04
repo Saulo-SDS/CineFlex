@@ -1,4 +1,8 @@
 import film from "../film.png"
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { URL_SERVER } from "../Shared/Api";
+
 import { Container, Description } from "../Shared/style";
 import { Films } from "./style";
 
@@ -10,24 +14,13 @@ export default function ListFilms() {
                 <p>Selecione o filme</p>
             </Description>
             <Films>
-                <div>
+
+                <li>
                     <img src={film}/>
-                </div>
-                <div>
+                </li>
+                <li>
                     <img src={film}/>
-                </div>
-                <div>
-                    <img src={film}/>
-                </div>
-                <div>
-                    <img src={film}/>
-                </div>
-                <div>
-                    <img src={film}/>
-                </div>
-                <div>
-                    <img src={film}/>
-                </div>
+                </li>
             </Films>
         </Container>
     );
