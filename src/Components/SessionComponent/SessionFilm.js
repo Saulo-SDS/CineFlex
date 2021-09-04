@@ -1,9 +1,9 @@
+import { useParams } from 'react-router-dom';
 import { Container, Description, BackImage, BottomBar} from "../Shared/style";
 import { InfoSession, Button } from "./style"
 import film from "../film.png"
 
 export default function SessionFilm() {
-
     return (
         <Container>
             <Description>

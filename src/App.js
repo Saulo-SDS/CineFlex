@@ -14,7 +14,7 @@ function App() {
         <Route path="/" exact>
           <ListFilms/>
         </Route>
-        <Route path="/Session" exact>
+        <Route path="/Session/:idFilm" exact>
           <SessionFilm/>
         </Route>
         <Route path="/Seats" exact>
