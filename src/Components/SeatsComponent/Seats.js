@@ -26,18 +26,13 @@ export default function Seats({seatSelecteds, setSeatSelecteds, setClientInfo}) 
         });
     }, []);
     
-    console.log("Selecionados: ", seatSelecteds);
-    console.log("assentos: ", numbers)
-    console.log(seats);
-    
     function sendData() {
         setClientInfo({name, cpf, numbers, title: seats.movie.title, date: seats.day.date, hour:seats.name});
         const request = axios.post(`${URL_SERVER}seats/book-many`, {ids: seatSelecteds, name: name, cpf: cpf});
         request.then(resp => {
-            console.log("sucess");
+            alert("Compra efetuada com sucesso!");
         })
     }
-
 
     return (
         <Container>

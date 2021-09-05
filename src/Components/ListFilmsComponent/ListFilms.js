@@ -4,6 +4,7 @@ import { Container, Description } from "../Shared/style";
 import { Films } from "./style";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Film from './Film';
 
 export default function ListFilms() {
     const [films, setFilms] = useState([]);
@@ -23,7 +24,7 @@ export default function ListFilms() {
             <Films>
                {films.map(({id, posterURL}) => (
                   <Link key={id} to={`/Session/${id}`}>
-                      <li><img src={posterURL} alt=""/></li>
+                      <Film image={posterURL}/>
                   </Link>
                 ))}
             </Films>

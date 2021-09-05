@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useState } from 'react';
+import Sucess from './FinalScreenComponent/Sucess';
+import ListFilms from './ListFilmsComponent/ListFilms';
+import Seats from './SeatsComponent/Seats';
+import SessionFilm from './SessionComponent/SessionFilm';
+import Top from './TopComponent/Top';
 import './App.css';
-import Sucess from './Components/FinalScreenComponent/Sucess';
-import ListFilms from './Components/ListFilmsComponent/ListFilms';
-import Seats from './Components/SeatsComponent/Seats';
-import SessionFilm from './Components/SessionComponent/SessionFilm';
-import Top from './Components/TopComponent/Top';
 
 function App() {
   const [seatSelecteds, setSeatSelecteds] = useState([]);

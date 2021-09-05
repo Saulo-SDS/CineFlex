@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
 import { Container, Description, ConfirmButton } from "../Shared/style";
 import { Informations } from "./style";
 export default function Sucess({seatSelecteds, setSeatSelecteds, clientInfo, setClientInfo}) {
+
+    function resetDatas(setSeatSelecteds, setClientInfo) {
+        setSeatSelecteds([]);
+        setClientInfo(null);
+    }
 
     return(
         <Container>
@@ -26,9 +32,12 @@ export default function Sucess({seatSelecteds, setSeatSelecteds, clientInfo, set
                 <p>CPF: {cpfTrans(clientInfo.cpf)}</p>
             </Informations>
 
-            <ConfirmButton>
-              <button>Voltar pra Home</button>
-            </ConfirmButton>
+            <Link to="/">
+                <ConfirmButton onClick={() => resetDatas(setSeatSelecteds, setClientInfo)}>
+                <button>Voltar pra Home</button>
+                </ConfirmButton>
+            </Link>
+            
         </Container>
     );
 }
