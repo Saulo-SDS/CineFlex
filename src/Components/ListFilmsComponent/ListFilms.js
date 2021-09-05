@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 export default function ListFilms() {
     const [films, setFilms] = useState([]);
 
-    useEffect(() => {
+    useEffect (() => {
         const request = axios.get(`${URL_SERVER}movies`)
         request.then(resp => {
             setFilms(resp.data);

@@ -1,35 +1,44 @@
 import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { Container, Description, BackImage, BottomBar} from "../Shared/style";
 import { InfoSession, Button } from "./style"
-import film from "../film.png"
+import { URL_SERVER } from '../Shared/Api';
+import axios from 'axios';
+
 
 export default function SessionFilm() {
+
+    const[sessions, setSessions] = useState(null);
+	const { idFilm } = useParams();
+
+    useEffect (() => {
+        const request = axios.get(`${URL_SERVER}movies/${idFilm}/showtimes`)
+        request.then(resp => {
+            setSessions(resp.data);
+        });
+    }, []);
+
     return (
         <Container>
             <Description>
                 <p>Selecione o horário</p>
             </Description>
-            <InfoSession>
-                <p>Quinta-feira - 24/06/2021</p>
-                <div>
-                    <Button>15:00</Button>
-                    <Button>19:00</Button>
-                </div>
-            </InfoSession>
-            <InfoSession>
-                <p>Sexta-feira - 25/06/2021</p>
-                <div>
-                    <Button>15:00</Button>
-                    <Button>19:00</Button>
-                </div>
-            </InfoSession>
-
+            
+            {sessions === null ? "" : sessions.days.map(({weekday, date, showtimes, id}) => (
+                <InfoSession key={id}>
+                    <p>{weekday} - {date}</p>
+                    {showtimes.map(({name, id}) => (
+                        <Button key={id}>{name}</Button>
+                    ))}
+                </InfoSession>                                    
+            ))}
+            
             <BottomBar>
                     <BackImage>
-                     <img src={film}/>
+                     <img src={sessions === null ? "" : sessions.posterURL}/>
                     </BackImage>
                     <div>
-                      <p>Enola Holmes</p>
+                      <p>{sessions === null ? "" : sessions.title}</p>
                     </div>                    
             </BottomBar>
         </Container>
