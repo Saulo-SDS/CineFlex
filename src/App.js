@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
-import FinalScreen from './Components/FinalScreenComponent/FinalScreen';
+import Sucess from './Components/FinalScreenComponent/Sucess';
 import ListFilms from './Components/ListFilmsComponent/ListFilms';
 import Seats from './Components/SeatsComponent/Seats';
 import SessionFilm from './Components/SessionComponent/SessionFilm';
@@ -30,7 +30,7 @@ function App() {
           />
         </Route>
         <Route path="/Sucess" exact>
-          <FinalScreen
+          <Sucess
             seatSelecteds={seatSelecteds}
             setSeatSelecteds={setSeatSelecteds}
             clientInfo={clientInfo}

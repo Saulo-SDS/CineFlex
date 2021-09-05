@@ -10,7 +10,7 @@ import BottomBar from './BottomBar';
 import InfoClient from './InfoClient';
 
 
-export default function Seats({seatSelecteds, setSeatSelecteds, clientInfo, setClientInfo}) {
+export default function Seats({seatSelecteds, setSeatSelecteds, setClientInfo}) {
     
     const [seats, setSeats] = useState(null);
     const [name, setName] = useState("");
@@ -28,9 +28,12 @@ export default function Seats({seatSelecteds, setSeatSelecteds, clientInfo, setC
     console.log("Selecionados: ", seatSelecteds);
 
 
-    function saveData() {
+    function sendData() {
         setClientInfo({name, cpf});
-        console.log("funcionando")
+        const request = axios.post(`${URL_SERVER}seats/book-many`, {ids: seatSelecteds, name: name, cpf: cpf});
+        request.then(resp => {
+            console.log("sucess");
+        })
     }
     
     return (
@@ -61,7 +64,7 @@ export default function Seats({seatSelecteds, setSeatSelecteds, clientInfo, setC
                 setCpf={setCpf}
             />
 
-            <ConfirmButton pointer={validData ? "visible" : "none"} onClick={saveData}>
+            <ConfirmButton pointer={validData ? "visible" : "none"} onClick={sendData}>
                 <Link to="/Sucess">
                         <button>Reservar assento(s)</button>
                 </Link>
