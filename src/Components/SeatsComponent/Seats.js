@@ -13,6 +13,7 @@ import InfoClient from './InfoClient';
 export default function Seats({seatSelecteds, setSeatSelecteds, setClientInfo}) {
     
     const [seats, setSeats] = useState(null);
+    const [numbers, setNumbers] = useState([]);
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
 	const { idSession } = useParams();
@@ -26,16 +27,18 @@ export default function Seats({seatSelecteds, setSeatSelecteds, setClientInfo}) 
     }, []);
     
     console.log("Selecionados: ", seatSelecteds);
-
-
+    console.log("assentos: ", numbers)
+    console.log(seats);
+    
     function sendData() {
-        setClientInfo({name, cpf});
+        setClientInfo({name, cpf, numbers, title: seats.movie.title, date: seats.day.date, hour:seats.name});
         const request = axios.post(`${URL_SERVER}seats/book-many`, {ids: seatSelecteds, name: name, cpf: cpf});
         request.then(resp => {
             console.log("sucess");
         })
     }
-    
+
+
     return (
         <Container>
             <Description>
@@ -51,6 +54,8 @@ export default function Seats({seatSelecteds, setSeatSelecteds, setClientInfo}) 
                         isAvailable={isAvailable}
                         seatSelecteds={seatSelecteds}
                         setSeatSelecteds={setSeatSelecteds}
+                        numbers={numbers}
+                        setNumbers={setNumbers}
                     /> 
                 ))}
             </SeatsSession>

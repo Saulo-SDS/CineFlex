@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { SeatSession } from "./style.js";
 
-export default function Seat({name, id, isAvailable, seatSelecteds, setSeatSelecteds}) {
+export default function Seat({name, id, isAvailable, seatSelecteds, setSeatSelecteds, numbers, setNumbers}) {
     
     const [selected, setSelected] = useState(false);
     function chosenSeat(id){
 
        if(selected) {
-            let modify = seatSelecteds.filter(select => select.id !== id);
+            let modify = seatSelecteds.filter(select => select !== id);
+            let modifyNumbers = numbers.filter(number => number !== name);
             setSeatSelecteds([...modify]);
+            setNumbers([...modifyNumbers]);
             setSelected(false);
        }else{
-        setSeatSelecteds([...seatSelecteds, id]);
+            setNumbers([...numbers, name]);
+            setSeatSelecteds([...seatSelecteds, id]);
             setSelected(true)
        }
     }
