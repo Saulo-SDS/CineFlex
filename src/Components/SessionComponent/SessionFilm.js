@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Container, Description, BackImage, BottomBar} from "../Shared/style";
 import { InfoSession, Button } from "./style"
@@ -28,7 +28,9 @@ export default function SessionFilm() {
                 <InfoSession key={id}>
                     <p>{weekday} - {date}</p>
                     {showtimes.map(({name, id}) => (
-                        <Button key={id}>{name}</Button>
+                        <Link key={id} to={`/Seats/${id}`}>       
+                            <Button>{name}</Button>
+                        </Link>
                     ))}
                 </InfoSession>                                    
             ))}

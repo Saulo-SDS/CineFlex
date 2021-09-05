@@ -1,22 +1,43 @@
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { BackImage, BottomBar, ConfirmButton, Container, Description } from "../Shared/style";
 import { ClientInfo, InfoColor, SeatsInfos, SeatsSession } from "./style.js";
-import film from "../film.png"
+import { URL_SERVER } from "../Shared/Api";
+import axios from 'axios';
+import Seat from './Seat';
 
-export default function Seats() {
-    const data = ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20",
-                    "21","22","23","24","25","26","27","28","29","30",
-                    "31","32","33","34","35","36","37","38","39","40",
-                    "41","42","43","44","45","46","47","48","49","50"
-    ];
 
+export default function Seats({seatSelecteds, setSeatSelecteds}) {
+
+    const [seats, setSeats] = useState(null);
+	const { idSession } = useParams();
+
+    useEffect (() => {
+        const request = axios.get(`${URL_SERVER}showtimes/${idSession}/seats`)
+        request.then(resp => {
+            setSeats(resp.data);
+        });
+    }, []);
+    
+    console.log("Selecionados: ", seatSelecteds)
 
     return (
         <Container>
             <Description>
                 <p>Selecione o(s) assento(s)</p>
             </Description>
+
             <SeatsSession>
-                {data.map((i) => <li>{i}</li>)}
+                {seats === null ? "": seats.seats.map(({name, id, isAvailable}) =>(
+                    <Seat 
+                        key={id}
+                        name={name}
+                        id={id}
+                        isAvailable={isAvailable}
+                        seatSelecteds={seatSelecteds}
+                        setSeatSelecteds={setSeatSelecteds}
+                    /> 
+                ))}
             </SeatsSession>
 
             <SeatsInfos>
@@ -47,11 +68,11 @@ export default function Seats() {
 
             <BottomBar>
                <BackImage>
-                    <img src={film}/>
+                    <img src={seats === null ? "" : seats.movie.posterURL} alt=""/>
                 </BackImage>
                 <div>
-                    <p>Enola Holmes</p>
-                    <p>Quinta-feira - 15:00</p>
+                    <p>{seats === null ? "" : seats.movie.title}</p>
+                    <p>{seats === null ? "" : `${seats.day.weekday} - ${seats.name}`}</p>                 
                 </div>       
             </BottomBar>
         </Container>

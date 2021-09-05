@@ -4,17 +4,17 @@ const SeatsSession = styled.ul`
     display: flex;
     flex-wrap: wrap;
     padding-left: 24px;
+`;
 
-    li {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 26px;
-        width: 26px;
-        margin: 0 7px 18px 0;
-        border-radius: 12px;
-        background-color: #C3CFD9;
-    }
+const SeatSession = styled.li`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    width: 26px;
+    margin: 0 7px 18px 0;
+    border-radius: 12px;
+    background-color: ${({color}) => color};
 `;
 
 const SeatsInfos = styled.div`
@@ -66,6 +66,7 @@ const ClientInfo = styled.div`
 
 export {
     SeatsSession,
+    SeatSession,
     SeatsInfos,
     InfoColor,
     ClientInfo
