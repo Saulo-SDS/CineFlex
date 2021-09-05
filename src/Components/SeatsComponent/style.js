@@ -17,7 +17,7 @@ const SeatSession = styled.li`
     background-color: ${({color}) => color};
 `;
 
-const SeatsInfos = styled.div`
+const Infos = styled.div`
     display: flex;
     justify-content: space-evenly;
 `;
@@ -67,7 +67,7 @@ const ClientInfo = styled.div`
 export {
     SeatsSession,
     SeatSession,
-    SeatsInfos,
+    Infos,
     InfoColor,
     ClientInfo
 }

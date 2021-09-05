@@ -9,7 +9,8 @@ import Top from './Components/TopComponent/Top';
 
 function App() {
   const [seatSelecteds, setSeatSelecteds] = useState([]);
-  
+  const [clientInfo, setClientInfo] = useState(null);
+
   return (
     <Router>
       <Top/>
@@ -24,10 +25,17 @@ function App() {
           <Seats 
             seatSelecteds={seatSelecteds}
             setSeatSelecteds={setSeatSelecteds}
+            clientInfo={clientInfo}
+            setClientInfo={setClientInfo}
           />
         </Route>
-        <Route path="Final-Screen" exact>
-          <FinalScreen/>    
+        <Route path="/Sucess" exact>
+          <FinalScreen
+            seatSelecteds={seatSelecteds}
+            setSeatSelecteds={setSeatSelecteds}
+            clientInfo={clientInfo}
+            setClientInfo={setClientInfo}
+          />    
         </Route>
       </Switch>
     </Router>

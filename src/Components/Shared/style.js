@@ -18,7 +18,7 @@ const Description = styled.div`
     color: ${(({color}) => color ? color : "#293845")};
 `;
 
-const BottomBar = styled.div`
+const Footer = styled.div`
     display: flex;
     align-items: center;
     font-family: Roboto;
@@ -57,7 +57,7 @@ const BackImage = styled.div`
 const ConfirmButton = styled.div`
     margin: 50px 0 150px 0;
     text-align: center;
-    
+    pointer-events: ${({pointer}) => pointer};
     button {
         height: 42px;
         width: 225px;
@@ -71,13 +71,10 @@ const ConfirmButton = styled.div`
     }
 `;
 
-
-
-
 export {
     Container,
     Description,
-    BottomBar,
+    Footer,
     BackImage,
     ConfirmButton
 }

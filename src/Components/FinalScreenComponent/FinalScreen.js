@@ -1,7 +1,8 @@
 import { Container, Description, ConfirmButton } from "../Shared/style";
 import { Informations } from "./style";
-export default function FinalScreen() {
-
+export default function FinalScreen({seatSelecteds, setSeatSelecteds, clientInfo, setClientInfo}) {
+    console.log("tela final")
+    console.log("iinfo client: ", clientInfo)
     return(
         <Container>
             <Description color="#247A6B" weigth="700">

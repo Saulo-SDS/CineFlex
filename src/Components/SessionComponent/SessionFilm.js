@@ -1,6 +1,6 @@
 import { useParams, Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Container, Description, BackImage, BottomBar} from "../Shared/style";
+import { Container, Description, BackImage, Footer} from "../Shared/style";
 import { InfoSession, Button } from "./style"
 import { URL_SERVER } from '../Shared/Api';
 import axios from 'axios';
@@ -35,14 +35,14 @@ export default function SessionFilm() {
                 </InfoSession>                                    
             ))}
             
-            <BottomBar>
-                    <BackImage>
-                     <img src={sessions === null ? "" : sessions.posterURL}/>
-                    </BackImage>
-                    <div>
-                      <p>{sessions === null ? "" : sessions.title}</p>
-                    </div>                    
-            </BottomBar>
+            <Footer>
+                <BackImage>
+                    <img src={sessions === null ? "" : sessions.posterURL}/>
+                </BackImage>
+                <div>
+                    <p>{sessions === null ? "" : sessions.title}</p>
+                </div>                    
+            </Footer>
         </Container>
     );
 }

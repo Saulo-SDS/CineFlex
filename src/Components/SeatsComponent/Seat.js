@@ -5,6 +5,7 @@ export default function Seat({name, id, isAvailable, seatSelecteds, setSeatSelec
     
     const [selected, setSelected] = useState(false);
     function chosenSeat(id, name){
+        
        if(selected) {
             let modify = seatSelecteds.filter(select => select.id !== id);
             setSeatSelecteds([...modify]);
@@ -16,7 +17,7 @@ export default function Seat({name, id, isAvailable, seatSelecteds, setSeatSelec
     }
 
     function err(){
-        console.log("Lugar indisponivel")
+        alert("Esse assento não está disponível")
     }
 
     return (
