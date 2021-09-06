@@ -8,9 +8,10 @@ import Seat from './Seat';
 import SeatInfos from './SeatInfos';
 import BottomBar from './BottomBar';
 import InfoClient from './InfoClient';
+import Loading from '../Shared/Loading';
 
 
-export default function Seats({seatSelecteds, setSeatSelecteds, setClientInfo}) {
+export default function Seats({seatSelecteds, setSeatSelecteds, setPurchaseInfo}) {
     
     const [seats, setSeats] = useState(null);
     const [numbers, setNumbers] = useState([]);
@@ -27,7 +28,7 @@ export default function Seats({seatSelecteds, setSeatSelecteds, setClientInfo}) 
     }, []);
     
     function sendData() {
-        setClientInfo({name, cpf, numbers, title: seats.movie.title, date: seats.day.date, hour:seats.name});
+        setPurchaseInfo({name, cpf, numbers, title: seats.movie.title, date: seats.day.date, hour:seats.name});
         const request = axios.post(`${URL_SERVER}seats/book-many`, {ids: seatSelecteds, name: name, cpf: cpf});
         request.then(resp => {
             alert("Compra efetuada com sucesso!");
@@ -36,50 +37,52 @@ export default function Seats({seatSelecteds, setSeatSelecteds, setClientInfo}) 
 
     return (
         <Container>
-            <Description>
-                <p>Selecione o(s) assento(s)</p>
-            </Description>
+            {seats ? 
+                <>
+                    <Description>
+                        <p>Selecione o(s) assento(s)</p>
+                    </Description>
 
-            <SeatsSession>
-                {seats === null ? "": seats.seats.map(({name, id, isAvailable}) =>(
-                    <Seat 
-                        key={id}
+                    <SeatsSession>
+                        {seats.seats.map(({name, id, isAvailable}) =>(
+                            <Seat 
+                                key={id}
+                                name={name}
+                                id={id}
+                                isAvailable={isAvailable}
+                                seatSelecteds={seatSelecteds}
+                                setSeatSelecteds={setSeatSelecteds}
+                                numbers={numbers}
+                                setNumbers={setNumbers}
+                            /> 
+                        ))}
+                    </SeatsSession>                
+                    
+                    <SeatInfos/>
+
+                    <InfoClient 
                         name={name}
-                        id={id}
-                        isAvailable={isAvailable}
-                        seatSelecteds={seatSelecteds}
-                        setSeatSelecteds={setSeatSelecteds}
-                        numbers={numbers}
-                        setNumbers={setNumbers}
-                    /> 
-                ))}
-            </SeatsSession>
-            
-            <SeatInfos/>
+                        cpf={cpf}
+                        setName={setName}
+                        setCpf={setCpf}
+                    />
 
-            <InfoClient 
-                name={name}
-                cpf={cpf}
-                setName={setName}
-                setCpf={setCpf}
-            />
-
-            <ConfirmButton pointer={validData ? "visible" : "none"} onClick={sendData}>
-                <Link to="/Sucess">
-                        <button>Reservar assento(s)</button>
-                </Link>
-            </ConfirmButton>
-           
-            {seats ?
-                <BottomBar 
-                    seats={seats} 
-                    title={seats.movie.title} 
-                    name={seats.name} 
-                    image={seats.movie.posterURL}
-                    weekday={seats.day.weekday} 
-                />
+                    <ConfirmButton pointer={validData ? "visible" : "none"} onClick={sendData}>
+                        <Link to="/Sucess">
+                                <button>Reservar assento(s)</button>
+                        </Link>
+                    </ConfirmButton>
+                
+                    <BottomBar 
+                        seats={seats} 
+                        title={seats.movie.title} 
+                        name={seats.name} 
+                        image={seats.movie.posterURL}
+                        weekday={seats.day.weekday} 
+                    />
+                </>
                 :
-                ""
+                <Loading/>
             }
         </Container>
     );

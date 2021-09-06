@@ -18,9 +18,10 @@ const Header = styled.header`
     position: fixed;
     top: 0;
     left: 0;
-    color: #E8833A;
-    background-color: #C3CFD9;
+    font-family: Roboto;
     font-size: 34px;
     font-weight: 400;
     line-height: 40px;
+    color: #E8833A;
+    background-color: #C3CFD9;
 `;

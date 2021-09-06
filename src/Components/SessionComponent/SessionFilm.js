@@ -4,7 +4,7 @@ import { Container, Description, BackImage, Footer} from "../Shared/style";
 import { InfoSession, Button } from "./style"
 import { URL_SERVER } from '../Shared/Api';
 import axios from 'axios';
-
+import Loading from '../Shared/Loading';
 
 export default function SessionFilm() {
 
@@ -20,29 +20,35 @@ export default function SessionFilm() {
 
     return (
         <Container>
-            <Description>
-                <p>Selecione o horário</p>
-            </Description>
-            
-            {sessions === null ? "" : sessions.days.map(({weekday, date, showtimes, id}) => (
-                <InfoSession key={id}>
-                    <p>{weekday} - {date}</p>
-                    {showtimes.map(({name, id}) => (
-                        <Link key={id} to={`/Seats/${id}`}>       
-                            <Button>{name}</Button>
-                        </Link>
+            {sessions ?
+                <>
+                    <Description>
+                        <p>Selecione o horário</p>
+                    </Description>
+                    
+                    {sessions.days.map(({weekday, date, showtimes, id}) => (
+                        <InfoSession key={id}>
+                            <p>{weekday} - {date}</p>
+                            {showtimes.map(({name, id}) => (
+                                <Link key={id} to={`/Seats/${id}`}>       
+                                    <Button>{name}</Button>
+                                </Link>
+                            ))}
+                        </InfoSession>                                    
                     ))}
-                </InfoSession>                                    
-            ))}
-            
-            <Footer>
-                <BackImage>
-                    <img src={sessions === null ? "" : sessions.posterURL}/>
-                </BackImage>
-                <div>
-                    <p>{sessions === null ? "" : sessions.title}</p>
-                </div>                    
-            </Footer>
+                    
+                    <Footer>
+                        <BackImage>
+                            <img src={sessions.posterURL}/>
+                        </BackImage>
+                        <div>
+                            <p>{sessions.title}</p>
+                        </div>                    
+                    </Footer>
+                </>
+                :
+                <Loading/>
+            }
         </Container>
     );
 }

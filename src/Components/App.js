@@ -9,7 +9,7 @@ import './App.css';
 
 function App() {
   const [seatSelecteds, setSeatSelecteds] = useState([]);
-  const [clientInfo, setClientInfo] = useState(null);
+  const [purchaseInfo, setPurchaseInfo] = useState(null);
 
   return (
     <Router>
@@ -25,16 +25,16 @@ function App() {
           <Seats 
             seatSelecteds={seatSelecteds}
             setSeatSelecteds={setSeatSelecteds}
-            clientInfo={clientInfo}
-            setClientInfo={setClientInfo}
+            purchaseInfo={purchaseInfo}
+            setPurchaseInfo={setPurchaseInfo}
           />
         </Route>
         <Route path="/Sucess" exact>
           <Sucess
             seatSelecteds={seatSelecteds}
             setSeatSelecteds={setSeatSelecteds}
-            clientInfo={clientInfo}
-            setClientInfo={setClientInfo}
+            purchaseInfo={purchaseInfo}
+            setPurchaseInfo={setPurchaseInfo}
           />    
         </Route>
       </Switch>

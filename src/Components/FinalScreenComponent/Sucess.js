@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Container, Description, ConfirmButton } from "../Shared/style";
 import { Informations } from "./style";
-export default function Sucess({seatSelecteds, setSeatSelecteds, clientInfo, setClientInfo}) {
+export default function Sucess({seatSelecteds, setSeatSelecteds, purchaseInfo, setPurchaseInfo}) {
 
-    function resetDatas(setSeatSelecteds, setClientInfo) {
+    function resetDatas(setSeatSelecteds, setPurchaseInfo) {
         setSeatSelecteds([]);
-        setClientInfo(null);
+        setPurchaseInfo(null);
     }
 
     return(
@@ -17,23 +17,23 @@ export default function Sucess({seatSelecteds, setSeatSelecteds, clientInfo, set
 
             <Informations>
                 <h6>Filme e sessão</h6>
-                <p>{clientInfo.title}</p>
-                <p>{clientInfo.date} {clientInfo.hour}</p>
+                <p>{purchaseInfo.title}</p>
+                <p>{purchaseInfo.date} {purchaseInfo.hour}</p>
             </Informations>
         
             <Informations>
                 <h6>Ingressos</h6>
-                {clientInfo.numbers.map((num, index ) => <p key={index}>Assento {num}</p>)}
+                {purchaseInfo.numbers.map((num, index ) => <p key={index}>Assento {num}</p>)}
             </Informations>
 
             <Informations>
                 <h6>Comprador</h6>
-                <p>Nome: {clientInfo.name}</p>
-                <p>CPF: {cpfTrans(clientInfo.cpf)}</p>
+                <p>Nome: {purchaseInfo.name}</p>
+                <p>CPF: {cpfTrans(purchaseInfo.cpf)}</p>
             </Informations>
 
             <Link to="/">
-                <ConfirmButton onClick={() => resetDatas(setSeatSelecteds, setClientInfo)}>
+                <ConfirmButton onClick={() => resetDatas(setSeatSelecteds, setPurchaseInfo)}>
                 <button>Voltar pra Home</button>
                 </ConfirmButton>
             </Link>
