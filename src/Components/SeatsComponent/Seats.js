@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { ConfirmButton, Container, Description } from "../Shared/style";
+import { BackPage, ConfirmButton, Container, Description } from "../Shared/style";
 import { URL_SERVER } from "../Shared/Api";
 import axios from 'axios';
 import Seat from './Seat';
@@ -9,6 +9,7 @@ import SeatInfos from './SeatInfos';
 import BottomBar from './BottomBar';
 import InfoClient from './InfoClient';
 import Loading from '../Shared/Loading';
+import Back from "../Shared/Back";
 
 
 export default function Seats({seatSelecteds, setSeatSelecteds, setPurchaseInfo}) {
@@ -18,6 +19,7 @@ export default function Seats({seatSelecteds, setSeatSelecteds, setPurchaseInfo}
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
 	const { idSession } = useParams();
+    const history = useHistory();
     let validData = isValide(name, cpf);
 
     useEffect (() => {
@@ -37,6 +39,7 @@ export default function Seats({seatSelecteds, setSeatSelecteds, setPurchaseInfo}
 
     return (
         <Container>
+            <Back history={history}/>
             {seats ? 
                 <>
                     <Description>
@@ -54,6 +57,7 @@ export default function Seats({seatSelecteds, setSeatSelecteds, setPurchaseInfo}
                                 setSeatSelecteds={setSeatSelecteds}
                                 numbers={numbers}
                                 setNumbers={setNumbers}
+                                onClick={() => history.push(`/Seats/${idSession}`)}
                             /> 
                         ))}
                     </SeatsSession>                

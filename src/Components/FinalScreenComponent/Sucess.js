@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Container, Description, ConfirmButton } from "../Shared/style";
+import { useHistory, Link } from "react-router-dom";
+import { Container, Description, ConfirmButton, BackPage } from "../Shared/style";
+import Back from "../Shared/Back";
 export default function Sucess({seatSelecteds, setSeatSelecteds, purchaseInfo, setPurchaseInfo}) {
-
+    const history = useHistory();
     function resetDatas(setSeatSelecteds, setPurchaseInfo) {
         setSeatSelecteds([]);
         setPurchaseInfo(null);
@@ -10,6 +11,7 @@ export default function Sucess({seatSelecteds, setSeatSelecteds, purchaseInfo, s
 
     return(
         <Container>
+            <Back history={history}/>
             <Description color="#247A6B" weigth="700">
                 <p>Pedido feito</p>
                 <p>com sucesso!</p>

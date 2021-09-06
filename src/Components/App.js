@@ -15,13 +15,13 @@ function App() {
     <Router>
       <Top/>
       <Switch>
-        <Route path="/" exact>
+        <Route path="/" exact component={ListFilms}>
           <ListFilms/>
         </Route>
-        <Route path="/Session/:idFilm" exact>
+        <Route path="/Session/:idFilm" exact component={Seats}>
           <SessionFilm/>
         </Route>
-        <Route path="/Seats/:idSession" exact>
+        <Route path="/Seats/:idSession" exact component={SessionFilm}>
           <Seats 
             seatSelecteds={seatSelecteds}
             setSeatSelecteds={setSeatSelecteds}
@@ -29,7 +29,7 @@ function App() {
             setPurchaseInfo={setPurchaseInfo}
           />
         </Route>
-        <Route path="/Sucess" exact>
+        <Route path="/Sucess" exact component={Sucess}>
           <Sucess
             seatSelecteds={seatSelecteds}
             setSeatSelecteds={setSeatSelecteds}

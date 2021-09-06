@@ -32,7 +32,6 @@ const Footer = styled.div`
     border-top: 1px solid #d0e5f7;
     background-color: #DFE6ED;
     color: #293845;
-
     p {
     margin-left: 15px;
     }
@@ -47,7 +46,6 @@ const BackImage = styled.div`
     border-radius: 2px;    
     margin-left: 10px;
     background-color: #ffffff;
-
     img {
         height: 72px;
         width: 48px;
@@ -71,32 +69,10 @@ const ConfirmButton = styled.div`
     }
 `;
 
-const Load = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {   
-        width: 150px;
-        height: 150px;
-        margin: 70px 0 20px 0;
-        -webkit-animation:spin 4s linear infinite;
-        -moz-animation:spin 4s linear infinite;
-        animation:spin 4s linear infinite;
-    }
-
-    p {
-        font-size: 18px;
-        line-height: 21px;
-        margin-left: 30px;
-    }
-`;
-
 export {
     Container,
     Description,
     Footer,
     BackImage,
-    ConfirmButton,
-    Load
+    ConfirmButton
 }

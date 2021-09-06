@@ -1,16 +1,18 @@
 import styled from "styled-components";
-import { useParams, Link} from 'react-router-dom';
+import { useParams, useHistory, Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Container, Description, BackImage, Footer} from "../Shared/style";
+import { Container, Description} from "../Shared/style";
 import { URL_SERVER } from '../Shared/Api';
 import Loading from '../Shared/Loading';
 import axios from 'axios';
 import BottomBar from "./BottomBar";
+import Back from "../Shared/Back";
 
 export default function SessionFilm() {
 
     const[sessions, setSessions] = useState(null);
 	const { idFilm } = useParams();
+    const history = useHistory();
 
     useEffect (() => {
         const request = axios.get(`${URL_SERVER}movies/${idFilm}/showtimes`)
@@ -21,6 +23,7 @@ export default function SessionFilm() {
 
     return (
         <Container>
+            <Back history={history}/>
             {sessions ?
                 <>
                     <Description>
@@ -31,7 +34,7 @@ export default function SessionFilm() {
                         <InfoSession key={id}>
                             <p>{weekday} - {date}</p>
                             {showtimes.map(({name, id}) => (
-                                <Link key={id} to={`/Seats/${id}`}>       
+                                <Link key={id} to={`/Seats/${id}`} onClick={() => history.push(`/Session/${idFilm}`)}>       
                                     <Button>{name}</Button>
                                 </Link>
                             ))}

@@ -1,7 +1,7 @@
 
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { Container, Description } from "../Shared/style";
 import { URL_SERVER } from "../Shared/Api";
 import Loading from '../Shared/Loading';
@@ -10,6 +10,7 @@ import Film from './Film';
 
 export default function ListFilms() {
     const [films, setFilms] = useState(null);
+    const history = useHistory();
 
     useEffect (() => {
         const request = axios.get(`${URL_SERVER}movies`)
@@ -27,7 +28,7 @@ export default function ListFilms() {
                     </Description>
                     <Films>
                         {films.map(({id, posterURL}) => (
-                            <Link key={id} to={`/Session/${id}`}>
+                            <Link key={id} to={`/Session/${id}`} onClick={() => history.push("/")}>
                                 <Film image={posterURL}/>
                             </Link>
                         ))}
