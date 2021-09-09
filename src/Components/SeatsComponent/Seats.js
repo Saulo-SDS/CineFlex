@@ -1,7 +1,7 @@
+import styled from "styled-components";
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ConfirmButton, Container, Description } from "../Shared/style";
-import { SeatsSession } from "./style.js";
 import { URL_SERVER } from "../Shared/Api";
 import axios from 'axios';
 import Seat from './Seat';
@@ -89,6 +89,11 @@ export default function Seats({seatSelecteds, setSeatSelecteds, setPurchaseInfo}
 }   
 
 function isValide(name, cpf) {
-
     return name.length > 0 && cpf.length === 11;
 }
+
+const SeatsSession = styled.ul`
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 24px;
+`;

@@ -1,5 +1,5 @@
+import styled from "styled-components";
 import { useState } from "react";
-import { SeatSession } from "./style.js";
 
 export default function Seat({name, id, isAvailable, seatSelecteds, setSeatSelecteds, numbers, setNumbers}) {
     
@@ -29,7 +29,18 @@ export default function Seat({name, id, isAvailable, seatSelecteds, setSeatSelec
             color={!isAvailable ? "#FBE192" : (selected ? "#8DD7CF" : "#C3CFD9")}
             onClick={isAvailable ? () => chosenSeat(id) : err}
             >
-                {name}
+            {name}
         </SeatSession>
     );
 }
+
+const SeatSession = styled.li`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    width: 26px;
+    margin: 0 7px 18px 0;
+    border-radius: 12px;
+    background-color: ${({color}) => color};
+`;

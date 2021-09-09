@@ -1,4 +1,4 @@
-import { InfoColor, Infos } from "./style";
+import styled from "styled-components";
 
 export default function SeatInfos() {
 
@@ -19,3 +19,27 @@ export default function SeatInfos() {
         </Infos>
     );
 }
+
+const Infos = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+`;
+
+const InfoColor = styled.div `
+    div{
+        margin: 0 auto;
+        height: 25px;
+        width: 25px;
+        left: 78px;
+        top: 377px;
+        border-radius: 17px;  
+        border: 1px solid ${({borderColor}) => borderColor};
+        background-color: ${({backgroundColor}) => backgroundColor};  
+    }
+    p {
+        font-size: 13px;
+        line-height: 15px;
+        letter-spacing: -0.013em;
+        color: #4E5A65;
+    }
+`;

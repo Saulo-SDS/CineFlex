@@ -1,10 +1,11 @@
+import styled from "styled-components";
 import { useParams, Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Container, Description, BackImage, Footer} from "../Shared/style";
-import { InfoSession, Button } from "./style"
 import { URL_SERVER } from '../Shared/Api';
-import axios from 'axios';
 import Loading from '../Shared/Loading';
+import axios from 'axios';
+import BottomBar from "./BottomBar";
 
 export default function SessionFilm() {
 
@@ -36,15 +37,10 @@ export default function SessionFilm() {
                             ))}
                         </InfoSession>                                    
                     ))}
-                    
-                    <Footer>
-                        <BackImage>
-                            <img src={sessions.posterURL}/>
-                        </BackImage>
-                        <div>
-                            <p>{sessions.title}</p>
-                        </div>                    
-                    </Footer>
+                    <BottomBar
+                        title={sessions.title}
+                        image={sessions.posterURL}
+                    />
                 </>
                 :
                 <Loading/>
@@ -52,3 +48,32 @@ export default function SessionFilm() {
         </Container>
     );
 }
+
+const InfoSession = styled.div`
+    margin: 0 38px 20px 38px;
+    p {
+        font-family: roboto;
+        font-size: 20px;
+        font-style: normal;
+        line-height: 23px;
+        letter-spacing: 0.02em;
+        color: #293845;
+        margin-bottom: 20px;
+    }
+    div {
+        margin-bottom: 30px;
+    }
+`;
+
+const Button = styled.button`
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    height: 43px;
+    width: 83px;
+    border: none;
+    border-radius: 3px;
+    background-color: #E8833A;
+    color: #ffffff;
+    margin-right: 10px;
+`;
